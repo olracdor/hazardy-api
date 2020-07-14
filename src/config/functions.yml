@@ -1,0 +1,25 @@
+functions:
+  login:
+    handler: src/handlers.login
+    events:
+      - http:
+          path: /v1/login
+          method: get
+          cors: true
+          private: true
+  getVehicles:
+    handler: src/handlers.getVehicles
+    events:
+      - http:
+          path: /v1/vehicles
+          method: get
+          cors: true
+          private: true
+  getVehicleById:
+    handler: src/handlers.getVehicleById
+    events:
+      - http:
+          path: /v1/vehicles/{vehicleId}
+          method: get
+          cors: true
+          private: true
