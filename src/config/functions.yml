@@ -8,11 +8,15 @@ functions:
           cors: true
           private: true
   getVehicles:
-    handler: src/handlers.getVehicles
+    handler: src/handlers.getVehiclesByCompanyId
     events:
       - http:
           path: /v1/vehicles
           method: get
+          request:
+            parameters:
+              querystrings:
+                companyId: true
           cors: true
           private: true
   getVehicleById:

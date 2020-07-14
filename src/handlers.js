@@ -41,10 +41,10 @@ module.exports.login = async (event, context) => {
     }
 };
 
-module.exports.getVehicles = async (event, context) => {
+module.exports.getVehiclesByCompanyId = async (event, context) => {
 
     try {
-        const result =  await vehicleService.getVehicles();
+        const result =  await vehicleService.getVehiclesByCompanyId(event.queryParameters.companyId);
         if (result)
             return {
                 statusCode: 200,
