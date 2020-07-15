@@ -1,4 +1,4 @@
-const vehicleService = require("./services/vehicleService");
+const hazardService = require("./services/hazardService");
 const authenticationService = require("./services/authenticationService");
 
 const uuid = require('uuid');
@@ -10,13 +10,13 @@ const headers = {
 };
 
 const errorBody = {
-    'error': 'failed to get vehicles.'
+    'error': 'failed to get hazards.'
 };
 
-module.exports.login = async (event, context) => {
+module.exports.getHazardsByCompanyId = async (event, context) => {
 
     try {
-        const result =  await vehicleService.getVehicles();
+        const result =  await hazardService.getHazardsByCompanyId(event.queryParameters.companyId);
         if (result)
             return {
                 statusCode: 200,
@@ -41,39 +41,11 @@ module.exports.login = async (event, context) => {
     }
 };
 
-module.exports.getVehiclesByCompanyId = async (event, context) => {
-
-    try {
-        const result =  await vehicleService.getVehiclesByCompanyId(event.queryParameters.companyId);
-        if (result)
-            return {
-                statusCode: 200,
-                headers: headers,
-                body: JSON.stringify(result),
-            }
-
-        return {
-            statusCode: 404,
-            headers: headers,
-            body: '',
-        }
-    }
-    catch (error) {
-        console.log(error);
-
-        return {
-            statusCode: error.statusCode || 501,
-            headers: headers,
-            body: errorBody,
-        };
-    }
-};
-
-module.exports.getVehicleById = async (event, context) => {
+module.exports.getHazardById = async (event, context) => {
 
     try {
 
-        const result = await vehicleService.getVehicleById(event.pathParameters.vehicleId)
+        const result = await hazardService.getHazardById(event.pathParameters.hazardId)
         if (result)
             return {
                 statusCode: 200,

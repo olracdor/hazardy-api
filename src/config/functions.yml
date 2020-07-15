@@ -7,11 +7,11 @@ functions:
           method: get
           cors: true
           private: true
-  getVehicles:
-    handler: src/handlers.getVehiclesByCompanyId
+  getHazardsByCompanyId:
+    handler: src/handlers.getHazardsByCompanyId
     events:
       - http:
-          path: /v1/vehicles
+          path: /v1/hazards
           method: get
           request:
             parameters:
@@ -19,11 +19,11 @@ functions:
                 companyId: true
           cors: true
           private: true
-  getVehicleById:
-    handler: src/handlers.getVehicleById
+  getHazardById:
+    handler: src/handlers.getHazardById
     events:
       - http:
-          path: /v1/vehicles/{vehicleId}
+          path: /v1/hazards/{hazardId}
           method: get
           cors: true
           private: true

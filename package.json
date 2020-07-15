@@ -1,12 +1,25 @@
 {
-  "name": "hazardy-service-api",
+  "name": "hazardy-service-common",
   "version": "1.0.0",
   "description": "Serverless CRUD service exposing a REST HTTP interface",
   "author": "Rod Santillan",
+  "scripts": {
+    "test": "npm run mocha",
+    "format": "./node_modules/prettier-eslint \"src/**/*.js\"",
+    "mocha": "./node_modules/mocha/bin/mocha './tests/**/*.test.js'",
+    "lint": "node ./node_modules/.bin/eslint ."
+  },
   "dependencies": {
     "aws-sdk-mock": "^5.1.0",
     "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "nock": "^13.0.2",
     "sinon": "^9.0.2",
     "uuid": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
   }
 }

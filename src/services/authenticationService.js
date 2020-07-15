@@ -6,8 +6,8 @@ const cognito = new AWS.CognitoIdentityServiceProvider();
 module.exports.login = async (email, password) => {
 
   var poolData = {
-    UserPoolId: conf.AWSConfig.UserPoolId,
-    ClientId: conf.AWSConfig.ClientId
+    UserPoolId: process.env.cognito_identity_pool_id,
+    ClientId: process.env.amazon_client_secret
   };
 
   var userPool = cognito.CognitoUserPool(poolData);

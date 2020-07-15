@@ -3,12 +3,12 @@
 const AWS = require('aws-sdk');
 const dynamodbclient = new AWS.DynamoDB.DocumentClient();
 
-module.exports.getVehiclesByCompanyId = async (companyId) => {
+module.exports.getHazardsByCompanyId = async (companyId) => {
   
-  console.log(`Fetching all vehicles for company ${company}`)
+  console.log(`Fetching all hazards for company ${companyId}`)
 
   const result = await dynamodbclient.scan({
-    TableName: process.env.vehicle_table,
+    TableName: process.env.hazard_table,
     FilterExpression: '#companyId = :companyId',
     ExpressionAttributeNames: {
       '#companyId': 'companyId',
@@ -20,12 +20,12 @@ module.exports.getVehiclesByCompanyId = async (companyId) => {
   return result.Items;
 };
 
-module.exports.getVehicleById = async (id) => {
+module.exports.getHazardById = async (id) => {
 
-  console.log(`Fetching vehicle with id ${id}`)
+  console.log(`Fetching hazard details with id ${id}`)
 
   const result = await dynamodbclient.scan({
-    TableName: process.env.vehicle_table,
+    TableName: process.env.hazard_table,
     FilterExpression: '#id = :id',
     ExpressionAttributeNames: {
       '#id': 'id',

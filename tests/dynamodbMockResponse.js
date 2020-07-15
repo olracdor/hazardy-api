@@ -1,8 +1,9 @@
 class MockResponse {
-    static getVehicleByIdMockResponse() {
+    static getHazardsByIdMockResponse() {
       return {
-        plate: "abc123",
-        driver: 'Joe Smith'
+        id: "123",
+        description: 'crash',
+        severity: 3
       }
     }
 

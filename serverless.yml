@@ -5,7 +5,7 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: hazardy-service-api
+service: hazardy-service-common
 
 # The `provider` block defines where your service will be deployed
 provider:
@@ -16,17 +16,12 @@ provider:
   apiKeys:
     - hazardy-api-${opt:stage, self:provider.stage}
   environment:
-    aws_account_id: accountid
     cognito_identity_pool_id: poolid
-    iam_role_arn: arn
-    cognito_dataset_name: dataset
-    cognito_key_name: key
-    callbackurl: url
     amazon_client_id: clientid
-    amazon_client_secret:  ${client_secret}
+    amazon_client_secret:  abc
     service_authentication: hazardy-service-common-${opt:stage, self:provider.stage}-authentication
-    region: ap-southeast-2
-    vehicle_table: vehicle-${opt:stage, self:provider.stage}
+    region: self:provider.region
+    hazard_table: hazard-${opt:stage, self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -36,7 +31,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.vehicle_table}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.hazard_table}"
     - Effect: Allow
       Action:
         - lambda:InvokeFunction
