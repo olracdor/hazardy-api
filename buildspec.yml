@@ -9,6 +9,6 @@ phases:
       - echo nodejs installation done.
   build:
     commands:
-      - deploying functions...
+      - echo deploying functions...
       - serverless deploy --stage dev | tee deploy.out
       - echo functions deployment done.
