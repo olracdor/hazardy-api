@@ -39,4 +39,21 @@ module.exports.getHazardById = async (id) => {
 
 };
 
+module.exports.createHazard = async (companyId) => {
+  
+  console.log(`Fetching all hazards for company ${companyId}`)
+
+  const result = await dynamodbclient.scan({
+    TableName: process.env.hazard_table,
+    FilterExpression: '#companyId = :companyId',
+    ExpressionAttributeNames: {
+      '#companyId': 'companyId',
+    },
+    ExpressionAttributeValues: {
+      ':companyId': companyId,
+    },
+  }).promise(); 
+  return result.Items;
+};
+
 

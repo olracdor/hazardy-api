@@ -8,6 +8,7 @@
     "format": "./node_modules/prettier-eslint \"src/**/*.js\"",
     "mocha": "./node_modules/mocha/bin/mocha './tests/**/*.test.js'",
     "lint": "node ./node_modules/.bin/eslint ."
+    
   },
   "dependencies": {
     "aws-sdk-mock": "^5.1.0",

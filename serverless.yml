@@ -16,10 +16,8 @@ provider:
   apiKeys:
     - hazardy-api-${opt:stage, self:provider.stage}
   environment:
-    cognito_identity_pool_id: poolid
-    amazon_client_id: clientid
-    amazon_client_secret:  abc
-    service_authentication: hazardy-service-common-${opt:stage, self:provider.stage}-authentication
+    cognito_identity_pool_id: abc
+    cognito_client_id: abc
     region: self:provider.region
     hazard_table: hazard-${opt:stage, self:provider.stage}
   iamRoleStatements:
@@ -32,9 +30,5 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.hazard_table}"
-    - Effect: Allow
-      Action:
-        - lambda:InvokeFunction
-      Resource: "arn:aws:lambda:${opt:region, self:provider.region}:*:function:${self:provider.environment.service_authentication}"
 
 functions: ${file(./src/config/functions.yml):functions}
