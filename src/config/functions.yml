@@ -4,7 +4,7 @@ functions:
     events:
       - http:
           path: /v1/authenticate
-          method: get
+          method: post
           cors: true
           private: true
   getHazardsByUserId:
