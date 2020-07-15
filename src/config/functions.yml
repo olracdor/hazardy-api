@@ -1,9 +1,9 @@
 functions:
   login:
-    handler: src/handlers.login
+    handler: src/handlers.authenticate
     events:
       - http:
-          path: /v1/login
+          path: /v1/authenticate
           method: get
           cors: true
           private: true
