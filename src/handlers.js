@@ -77,7 +77,7 @@ module.exports.authenticate = async (event, context) => {
         const data = JSON.parse(event.body);
         const username = data.username
         const password = data.password
-        const result = await authenticationService.login(username, password)
+        const result = await authenticationService.authenticate(username, password)
         if (result)
             return {
                 statusCode: 200,
