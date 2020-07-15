@@ -16,8 +16,8 @@ provider:
   apiKeys:
     - hazardy-api-${opt:stage, self:provider.stage}
   environment:
-    cognito_identity_pool_id: abc
-    cognito_client_id: abc
+    cognito_identity_pool_id: ${ssm:/path/to/service/cognito_identity_pool_id}
+    cognito_client_id: ${ssm:/path/to/service/cognito_client_id}
     region: self:provider.region
     hazard_table: hazard-${opt:stage, self:provider.stage}
   iamRoleStatements:
