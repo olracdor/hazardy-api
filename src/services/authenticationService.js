@@ -3,7 +3,7 @@
 const AWS = require('aws-sdk');
 const cognito = new AWS.CognitoIdentityServiceProvider();
 
-module.exports.login = async (email, password) => {
+module.exports.login = async (username, password) => {
 
   var poolData = {
     UserPoolId: process.env.cognito_identity_pool_id,
@@ -12,7 +12,7 @@ module.exports.login = async (email, password) => {
 
   var userPool = cognito.CognitoUserPool(poolData);
   var authData = {
-    Username: email,
+    Username: username,
     Password: password
   };
 
