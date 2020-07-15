@@ -13,10 +13,10 @@ const errorBody = {
     'error': 'failed to get hazards.'
 };
 
-module.exports.getHazardsByCompanyId = async (event, context) => {
+module.exports.getHazardsByUserId = async (event, context) => {
 
     try {
-        const result =  await hazardService.getHazardsByCompanyId(event.queryParameters.companyId);
+        const result =  await hazardService.getHazardsByUserId(event.queryParameters.userId);
         if (result)
             return {
                 statusCode: 200,

@@ -3,18 +3,18 @@
 const AWS = require('aws-sdk');
 const dynamodbclient = new AWS.DynamoDB.DocumentClient();
 
-module.exports.getHazardsByCompanyId = async (companyId) => {
+module.exports.getHazardsByUserId = async (userId) => {
   
-  console.log(`Fetching all hazards for company ${companyId}`)
+  console.log(`Fetching all hazards for user ${userId}`)
 
   const result = await dynamodbclient.scan({
     TableName: process.env.hazard_table,
-    FilterExpression: '#companyId = :companyId',
+    FilterExpression: '#userId = :userId',
     ExpressionAttributeNames: {
-      '#companyId': 'companyId',
+      '#userId': 'userId',
     },
     ExpressionAttributeValues: {
-      ':companyId': companyId,
+      ':userId': userId,
     },
   }).promise(); 
   return result.Items;

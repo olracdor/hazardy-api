@@ -7,8 +7,8 @@ functions:
           method: get
           cors: true
           private: true
-  getHazardsByCompanyId:
-    handler: src/handlers.getHazardsByCompanyId
+  getHazardsByUserId:
+    handler: src/handlers.getHazardsByUserId
     events:
       - http:
           path: /v1/hazards
@@ -16,7 +16,7 @@ functions:
           request:
             parameters:
               querystrings:
-                companyId: true
+                userId: true
           cors: true
           private: true
   getHazardById:
