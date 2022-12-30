@@ -13,7 +13,7 @@
   "dependencies": {
     "aws-sdk-mock": "^5.1.0",
     "chai": "^4.2.0",
-    "mocha": "^8.0.1",
+    "mocha": "^8.4.0",
     "nock": "^13.0.2",
     "sinon": "^9.0.2",
     "uuid": "^2.0.3"
